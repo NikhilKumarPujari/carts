@@ -1,0 +1,23 @@
+  pipeline{
+    agent any
+    tools{
+     maven 'maven 3.6'           
+    }
+    stages{
+        stage(' Build '){
+            sh 'mvn compile'
+        }
+    }
+  stages{
+        stage('test '){
+            sh 'mvn clean test'
+        }
+    }
+      stages{
+        stage('package'){
+            sh 'mvn package -DskipTests'
+        }
+    }
+    
+
+}
